@@ -49,7 +49,7 @@ This demo tries to showcase many different Next.js features.
 - Running code on server startup
 - A cron that hits a Route Handler
 
-View the demo at https://nextselfhost.dev to see further explanations.
+View the demo at <https://nextselfhost.dev> to see further explanations.
 
 ## Deploy Script
 
@@ -60,13 +60,13 @@ I've included a Bash script which does the following:
 1. Clones this repository
 1. Generates an SSL certificate
 1. Builds your Next.js application from the Dockerfile
-1. Sets up Nginx and configures HTTPS and rate limting
+1. Sets up Nginx and configures HTTPS and rate limiting
 1. Sets up a cron which clears the database every 10m
 1. Creates a `.env` file with your Postgres database creds
 
 Once the deployment completes, your Next.js app will be available at:
 
-```
+```md
 http://your-provided-domain.com
 ```
 
