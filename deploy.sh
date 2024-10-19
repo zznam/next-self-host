@@ -10,7 +10,7 @@ DOMAIN_NAME="nakantc.com" # replace with your own
 EMAIL="nam@nakantc.com" # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/leerob/next-self-host.git"
+REPO_URL="https://github.com/zznam/next-self-host.git"
 APP_DIR=~/myapp
 SWAP_SIZE="1G"  # Swap size of 1GB
 
