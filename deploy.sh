@@ -103,7 +103,7 @@ sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos
 
 # Ensure SSL files exist or generate them
 if [ ! -f /etc/letsencrypt/options-ssl-nginx.conf ]; then
-  sudo wget https://raw.githubusercontent.com/certbot/certbot/main/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf -P /etc/letsencrypt/
+  sudo wget https://raw.githubusercontent.com/certbot/certbot/refs/heads/main/certbot-nginx/src/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf -P /etc/letsencrypt/
 fi
 
 if [ ! -f /etc/letsencrypt/ssl-dhparams.pem ]; then
@@ -165,8 +165,11 @@ if ! sudo docker-compose ps | grep "Up"; then
   exit 1
 fi
 
+# Setup automatic SSL certificate renewal...
+( crontab -l 2>/dev/null; echo "0 */12 * * * certbot renew --quiet && systemctl reload nginx" ) | crontab -
+
 # Output final message
-echo "Deployment complete. Your Next.js app and PostgreSQL database are now running. 
+echo "Deployment complete. Your Next.js app and PostgreSQL database are now running.
 Next.js is available at https://$DOMAIN_NAME, and the PostgreSQL database is accessible from the web service.
 
 The .env file has been created with the following values:
